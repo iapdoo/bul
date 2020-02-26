@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+Use Redirect;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\AddUserRequestAdmin;
 
@@ -23,7 +24,7 @@ class UsersController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        return redirect('/adminpanel/user')->withFlashMassage('تمت اضافه العضو بنجاح ');
+        return redirect('/adminpanel/users')->withFlashMassage('تمت اضافه العضو بنجاح ');
     }
 
     //    public function edit($id , User $user){
@@ -35,10 +36,11 @@ class UsersController extends Controller
         $user=User::find($id);
         return view('admin.users.edit',compact('user'));
     }
-    public function update($id , User $user , Request $request){
-        $userUpdated=$user->find($id);
-        $userUpdated->fill($request->all())->save();
-        return Redirect::back()->withFlashMassage('تمت التعديل العضو بنجاح ');
+    public function update(Request $request,$id)
+    {
+        User::find($id)->update($request->all());
+        return redirect('/adminpanel/users')->withFlashMassage('تمت التعديل العضو بنجاح ');
+    
     }
 
 
