@@ -1,4 +1,3 @@
-
 @extends('admin.layouts.layout')
 @section('title')
 اضف عضو
@@ -41,7 +40,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <form class="form-ad" action="{{ url('/adminpanel/users/store') }}" method="post" >
+                        <form class="form-ad" action="{{ url('/adminpanel/users') }}" method="post" >
                             {{ method_field('POST') }}
                             <!-- rest of the form -->
                             @include('admin.users.form')

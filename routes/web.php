@@ -27,3 +27,4 @@ Route::group(['middleware'=>[ 'web','admin']],function (){
 Route::get('/adminpanel', 'AdminController@index');
 Route::resource('/adminpanel/users', 'UsersController');
 });
+
