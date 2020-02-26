@@ -16,9 +16,9 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+#users 
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::post('/adminpanel/users/changepassword', 'UsersController@updatePassword');
 /*
  * admin route
  * */

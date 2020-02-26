@@ -42,6 +42,12 @@ class UsersController extends Controller
         return redirect('/adminpanel/users')->withFlashMassage('تمت التعديل العضو بنجاح ');
     
     }
+    public function updatePassword(Request $request, User $user){
+        $userupdated = $user->find($request->user_id);
+        $password=  Hash::make($request->password);
+        $userupdated->firstOrFail(['password' => '$password'])->save();
+        return redirect('/adminpanel/users')->withFlashMassage('تم تغيير كلمه المرور بنجاح  ');
+    }
 
 
 }
